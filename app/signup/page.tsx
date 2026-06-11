@@ -2,11 +2,9 @@
 import { useState, useEffect } from "react";
 import { supabase } from "@/lib/supabase";
 import Navbar from "@/components/Navbar";
-import { useRouter } from "next/navigation";
+
 
 export default function SignupPage() {
-
-    const router = useRouter();
 
     const [email, setEmail] = useState("");
     const [emailError, setEmailError] = useState("");

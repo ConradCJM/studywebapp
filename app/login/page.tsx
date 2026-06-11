@@ -12,8 +12,6 @@ export default function LoginPage() {
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
 
-
-
     const handleLogin = async (
         e: React.SyntheticEvent<HTMLFormElement>
     ) => {
