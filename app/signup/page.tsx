@@ -76,7 +76,7 @@ export default function SignupPage() {
         }
 
         setSignupSuccess(
-            "Account created! Check your email to authenticate your account. (If you don't see an email, check your spam folder or maybe you already have an account.)"
+            "Account created! Check your email to authenticate your account. If you don't see an email, check your spam folder or maybe you already have an account."
         );
     };
     return (
