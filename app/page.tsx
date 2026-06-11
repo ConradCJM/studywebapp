@@ -1,65 +1,83 @@
-import Image from "next/image";
+import Navbar from "@/components/Navbar";
 
-export default function Home() {
+export default function Page() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <>
+      <Navbar />
+      <main className="min-h-screen bg-[#FFF8EC] text-[#546B41] pt-24">
+        {/* Hero Section */}
+        <section className="px-6 py-24 md:py-32 text-center max-w-4xl mx-auto">
+          <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-[#546B41]">
+            Grow study habits that actually stick.
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+
+          <p className="mt-6 text-lg md:text-xl text-[#99AD7A]">
+            Your notes become quizzes. Your progress becomes a garden. Your consistency becomes growth.
           </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+
+          <div className="mt-10 flex justify-center gap-4">
+            <a
+              href="/signup"
+              className="px-6 py-3 rounded-lg bg-[#546B41] text-[#FFF8EC] font-medium hover:bg-[#99AD7A] transition"
+            >
+              Get Started
+            </a>
+          </div>
+        </section>
+
+        {/* Features Section */}
+        <section className="px-6 py-20 bg-[#DCCCAC]">
+          <div className="max-w-6xl mx-auto grid md:grid-cols-5 gap-12 text-center">
+            <div>
+              <h3 className="text-xl font-semibold text-[#546B41]">
+                AI‑Generated Quizzes From Your Notes
+              </h3>
+              <p className="mt-3 text-[#546B41]/70">
+                Upload your notes and instantly get personalized quizzes designed to reinforce what matters most.
+              </p>
+            </div>
+
+            <div>
+              <h3 className="text-xl font-semibold text-[#546B41]">
+                Daily Study Sets That Keep You Consistent
+              </h3>
+              <p className="mt-3 text-[#546B41]/70">
+                Your study routine is broken into small, manageable daily sets - making it easier to stay on track without burning out.
+              </p>
+            </div>
+
+            <div>
+              <h3 className="text-xl font-semibold text-[#546B41]">
+                Grow a Plant for Every Course
+              </h3>
+              <p className="mt-3 text-[#546B41]/70">
+                Each course has its own plant that evolves through growth stages. Rare plants take longer to grow, giving you long‑term goals to work toward.
+              </p>
+            </div>
+
+            <div>
+              <h3 className="text-xl font-semibold text-[#546B41]">
+                Collect Rare Plants & Build Your Garden
+              </h3>
+              <p className="mt-3 text-[#546B41]/70">
+                Fully grown plants are added to your collection. Study consistently to unlock uncommon, rare, and legendary plant species.
+              </p>
+            </div>
+
+            <div>
+              <h3 className="text-xl font-semibold text-[#546B41]">
+                Organized Notes & Study History
+              </h3>
+              <p className="mt-3 text-[#546B41]/70">
+                All your uploads, quizzes, and plant progress are neatly stored so you can revisit material anytime.
+              </p>
+            </div>
+
+          </div>
+        </section>
+
+        
       </main>
-    </div>
+    </>
   );
 }
