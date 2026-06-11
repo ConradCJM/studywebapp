@@ -1,6 +1,8 @@
 "use client";
 import { useState } from "react";
+import { supabase } from "@/lib/supabase";
 import Navbar from "@/components/Navbar";
+
 
 export default function SignupPage() {
     const [email, setEmail] = useState("");
@@ -10,6 +12,10 @@ export default function SignupPage() {
     const [confirmPassword, setConfirmPassword] = useState("");
     const [passwordError, setPasswordError] = useState("");
     const [confirmError, setConfirmError] = useState("");
+
+    const [signupError, setSignupError] = useState("");
+    const [signupSuccess, setSignupSuccess] = useState("");
+
 
     //email validation 
     const validateEmail = (email: string) => {
@@ -47,6 +53,32 @@ export default function SignupPage() {
     };
 
     const formIsValid = email && password && confirmPassword && !emailError && !passwordError && !confirmError;
+
+    //signup handler
+    const handleSubmit = async (e: React.SyntheticEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        setSignupError("");
+        setSignupSuccess("");
+
+        if (!formIsValid) {
+            setSignupError("Please fix the errors above before submitting.");
+            return;
+        }
+
+        const { error } = await supabase.auth.signUp({
+            email,
+            password,
+        });
+
+        if (error) {
+            setSignupError(error.message);
+            return;
+        }
+
+        setSignupSuccess(
+            "Account created! Check your email to authenticate your account. (If you don't see an email, check your spam folder or maybe you already have an account.)"
+        );
+    };
     return (
         <>
             <Navbar />
@@ -58,7 +90,7 @@ export default function SignupPage() {
                         Sign up to start uploading notes and generating daily study sets.
                     </p>
 
-                    <form className="mt-10 space-y-6">
+                    <form onSubmit={handleSubmit} className="mt-10 space-y-6">
                         {/* Email */}
                         <div className="text-left">
                             <label className="block text-sm font-medium mb-1">Email</label>
@@ -129,6 +161,16 @@ export default function SignupPage() {
                         >
                             Sign Up
                         </button>
+
+                        {/* Supabase errors */}
+                        {signupError && (
+                            <p className="text-red-600 text-sm mt-2">{signupError}</p>
+                        )}
+
+                        {/* Success */}
+                        {signupSuccess && (
+                            <p className="text-green-600 text-sm mt-2">{signupSuccess}</p>
+                        )}
                     </form>
 
                     <p className="mt-6 text-gray-600">
